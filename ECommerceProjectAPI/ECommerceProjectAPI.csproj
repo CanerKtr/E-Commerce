@@ -31,8 +31,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="Mapping\" />
     <Folder Include="Valildators\" />
-    <Folder Include="Repository\Implementations\" />
-    <Folder Include="Repository\Interfaces\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Services\Implementations\" />
   </ItemGroup>
