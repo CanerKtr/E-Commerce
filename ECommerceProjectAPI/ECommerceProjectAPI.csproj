@@ -26,8 +26,6 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Data\Configurations\" />
-    <Folder Include="DTOs\Response\" />
-    <Folder Include="DTOs\Request\" />
     <Folder Include="Extensions\" />
     <Folder Include="Mapping\" />
     <Folder Include="Valildators\" />

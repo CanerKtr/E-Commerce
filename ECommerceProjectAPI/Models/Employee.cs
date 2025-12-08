@@ -1,5 +1,3 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-
 namespace ECommerceProjectAPI.Models
 {
     public class Employee: User
@@ -13,7 +11,7 @@ namespace ECommerceProjectAPI.Models
 
 
         // Employee Branch Relationship
-        public int? BranchId { get; set; }
+        public int BranchId { get; set; }
         public Branch Branch { get; set; }
 
         // Branch Employee Manager Relationship

@@ -1,11 +1,10 @@
-﻿namespace ECommerceProjectAPI.Models
+namespace ECommerceProjectAPI.Models
 {
     public class Branch
     {
         public int BranchId { get; set; }
         public string BranchName { get; set; }
         public decimal? TotalSales { get; set; }
-
 
         // Branch Manager Relationship
         public int MgrId { get; set; }
