@@ -1,5 +1,3 @@
-﻿using System.Net;
-
 namespace ECommerceProjectAPI.Models
 {
     public abstract class User
@@ -14,7 +12,7 @@ namespace ECommerceProjectAPI.Models
         public string PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; } 
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public ICollection<Address> Addresses { get; set; } = new List<Address>();
     }
     public enum UserRole

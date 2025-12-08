@@ -1,4 +1,4 @@
-﻿namespace ECommerceProjectAPI.Models
+namespace ECommerceProjectAPI.Models
 {
     public abstract class Product
     {
@@ -23,8 +23,8 @@
     }
     public enum ProductCategoryType
     {
-        phone,
-        laptop,
-        book
+        Phone,
+        Laptop,
+        Book
     }
 }

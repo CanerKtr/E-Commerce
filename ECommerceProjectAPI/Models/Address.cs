@@ -1,4 +1,4 @@
-﻿namespace ECommerceProjectAPI.Models
+namespace ECommerceProjectAPI.Models
 {
     public class Address
     {
