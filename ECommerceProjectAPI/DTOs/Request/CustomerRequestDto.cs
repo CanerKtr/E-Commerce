@@ -12,7 +12,7 @@ namespace ECommerceProjectAPI.DTOs.Request
         public DateTime DateOfBirth { get; set; }
         public decimal Balance { get; set; } = 0;
         public CustomerLevelType? CustomerLevelType { get; set; }  
-        public List<CreateAddressRequestDto> Addresses { get; set; } = new List<CreateAddressRequestDto>();
+        public List<AddressRequestDto> Addresses { get; set; } = new List<AddressRequestDto>();
 
     }
     public class UpdateCustomerRequestDto

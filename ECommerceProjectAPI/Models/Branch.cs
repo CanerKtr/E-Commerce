@@ -5,6 +5,7 @@ namespace ECommerceProjectAPI.Models
         public int BranchId { get; set; }
         public string BranchName { get; set; }
         public decimal? TotalSales { get; set; }
+        public bool IsActive { get; set; } = true;
 
         // Branch Manager Relationship
         public int MgrId { get; set; }

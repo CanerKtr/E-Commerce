@@ -2,14 +2,18 @@ namespace ECommerceProjectAPI.Models
 {
     public class Order
     {
-        public int OrderId { get; private set; }
-        public DateTime OrderDate { get; private set; }
+        public int OrderId { get; set; }
+        public DateTime OrderDate { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public decimal TotalAmount => Items.Sum(item => item.TotalPrice);
 
         // customer relationship
-        public int CustomerId { get; private set; }
-        public Customer Customer { get; private set; }
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
+
+        // address relationship
+        public int AddressId { get; set; }
+        public Address Address { get; set; }
 
         // order items relationship
         public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();

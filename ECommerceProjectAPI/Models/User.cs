@@ -9,6 +9,7 @@ namespace ECommerceProjectAPI.Models
         public string Password { get; set; }
         public UserRole Role { get; set; }
         public GenderType? Gender { get; set; }
+        public bool IsActive { get; set; } = true;
         public string PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; } 
