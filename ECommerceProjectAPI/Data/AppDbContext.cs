@@ -90,8 +90,14 @@ namespace ECommerceProjectAPI.Data
                 .WithMany(p => p.Addresses)
                 .HasForeignKey(o => o.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+            // Address one to one Order Relationship
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Address)
+                .WithOne(a => a.Order)
+                .HasForeignKey<Order>(o => o.AddressId)
+                .OnDelete(DeleteBehavior.NoAction);
 
-                
+
 
             // Configure TPT Inheritance -----
 

@@ -12,7 +12,6 @@ namespace ECommerceProjectAPI.DTOs.Response
         public string Phone { get; set; } = string.Empty;
         public CustomerLevelType LevelType { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

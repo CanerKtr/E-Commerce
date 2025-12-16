@@ -36,5 +36,15 @@ namespace ECommerceProjectAPI.DTOs.Request
         public int? RamSizeGB { get; set; }
         public float? ScreenSizeInches { get; set; }
     }
+    public class UpdateProductRequestDto
+    {
+        public string? ProductName { get; set; }
+        public string? Description { get; set; }
+        public decimal? ProductPrice { get; set; }
+        public int? StockQuantity { get; set; }
+        public bool? IsActive { get; set; }
+        public int? SalesPersonId { get; set; }
+        public DateTime UpdateAt { get; set; } = DateTime.Now;
+    }
 
 }

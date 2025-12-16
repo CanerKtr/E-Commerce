@@ -5,6 +5,7 @@ namespace ECommerceProjectAPI.Repository.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
+        IRepository<User> Users { get; }
         IRepository<Admin> Admins { get; }
         IRepository<Customer> Customers { get; }
         IRepository<Employee> Employees { get; }

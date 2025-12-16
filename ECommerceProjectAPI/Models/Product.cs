@@ -9,7 +9,7 @@ namespace ECommerceProjectAPI.Models
         public int StockQuantity { get; set; }
         public ProductCategoryType ProductCategory { get; set; }
         public bool IsActive { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         // Employee Tracking Relationship
         public int? SalesPersonId { get; set; }

@@ -10,7 +10,7 @@ namespace ECommerceProjectAPI.Repository.Implementations
     {
         private readonly AppDbContext _context;
         private IDbContextTransaction? _transaction;
-
+        public IRepository<User> Users { get; }
         public IRepository<Admin> Admins { get;}
         public IRepository<Customer> Customers { get; }
         public IRepository<Employee> Employees { get; }
@@ -28,6 +28,7 @@ namespace ECommerceProjectAPI.Repository.Implementations
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
+            Users = new Repository<User>(_context);
             Admins = new Repository<Admin>(_context);
             Customers = new Repository<Customer>(_context);
             Employees = new Repository<Employee>(_context);
