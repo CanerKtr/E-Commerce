@@ -178,10 +178,11 @@ namespace ECommerceProjectAPI.Services.Implementations
                 {
                     return ApiResponse<CartResponseDto>.FailureResponse("Quantity must be greater than or equal to zero.");
                 }
+                CartResponseDto response;
                 if (updateDto.Quantity == 0)
                 {
                     await RemoveFromCartAsync(cartItem.Cart.CustomerId, cartItem.CartItemId);
-                    var response = _mapper.Map<CartResponseDto>(cartItem.Cart);
+                    response = _mapper.Map<CartResponseDto>(cartItem.Cart);
                     return ApiResponse<CartResponseDto>.SuccessResponse(response, "Item removed from cart as quantity was set to zero.");
                 }
                 if (cartItem.Product.StockQuantity < updateDto.Quantity)
@@ -191,7 +192,7 @@ namespace ECommerceProjectAPI.Services.Implementations
                 cartItem.Quantity = updateDto.Quantity;
                 _unitOfWork.CartItems.Update(cartItem);
                 await _unitOfWork.SaveChangesAsync();
-                var response = _mapper.Map<CartResponseDto>(cartItem.Cart);
+                response = _mapper.Map<CartResponseDto>(cartItem.Cart);
                 return ApiResponse<CartResponseDto>.SuccessResponse(response , "Cart item updated successfully.");
             }
             catch (Exception ex)
