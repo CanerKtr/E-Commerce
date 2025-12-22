@@ -140,6 +140,9 @@ namespace ECommerceProjectAPI.Services.Implementations
             {
                 var products = await _unitOfWork.Products.GetAllAsync();
                 var filteredProducts = products.Where(p => p.ProductCategory == categoryName && p.IsActive == true);
+                if(!filteredProducts.Any())
+                    return ApiResponse<IEnumerable<ProductResponseDto>>.FailureResponse("No products found for the specified category.");
+
                 var productDtos = _mapper.Map<IEnumerable<ProductResponseDto>>(filteredProducts);
                 return ApiResponse<IEnumerable<ProductResponseDto>>.SuccessResponse(productDtos);
             }

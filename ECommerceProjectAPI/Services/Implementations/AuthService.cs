@@ -54,7 +54,7 @@ namespace ECommerceProjectAPI.Services.Implementations
                 var existingUser = await _unitOfWork.Users.AnyAsync(c => c.Email == registerDto.Email);
                 if (existingUser)
                     return ApiResponse<CustomerResponseDto>.FailureResponse("Email already registered");
-                // admin ve employee kaydı yapılamaz sadece customer kayıt yapabilir.
+                // Only customers are allowed to register
                 var customer = new Customer
                 {
                     UserFirstName = registerDto.FirstName,
@@ -95,23 +95,28 @@ namespace ECommerceProjectAPI.Services.Implementations
 
         public string GenerateJwtToken(int userId, string email)
         {
-            var secretKey = _configuration["JwtSettings:SecretKey"] ?? throw new InvalidOperationException("JWT Secret Key not configured");
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var secret = Environment.GetEnvironmentVariable("JWT_SECRET");
+            var issuer = Environment.GetEnvironmentVariable("JWT_ISSUER");
+            var audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE");
+            var expires = int.Parse(
+                Environment.GetEnvironmentVariable("JWT_EXPIRES_MINUTES")!
+            );
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
-                new Claim(ClaimTypes.Email, email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
+            new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
+            new Claim(JwtRegisteredClaimNames.Email, email),
+        };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret!));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["JwtSettings:Issuer"],
-                audience: _configuration["JwtSettings:Audience"],
-                claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(int.Parse(_configuration["JwtSettings:ExpirationMinutes"] ?? "60")),
-                signingCredentials: credentials
+                issuer,
+                audience,
+                claims,
+                expires: DateTime.UtcNow.AddMinutes(expires),
+                signingCredentials: creds
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
