@@ -5,7 +5,7 @@ namespace ECommerceProjectAPI.DTOs.Request
     {
         public string CurrentPassword { get; set; } = string.Empty;
         public string NewPassword { get; set; } = string.Empty;
-        public string VerifyNewPassWord {  get; set; } = string.Empty;
+        public string VerifyNewPassword {  get; set; } = string.Empty;
     }
 
 }
